@@ -1,0 +1,144 @@
+.cv-paper {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: var(--shadow-card);
+  padding: 48px 52px;
+  color: var(--ink);
+  text-align: left;
+}
+
+.cv-header {
+  text-align: center;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.cv-header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+}
+
+.cv-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.cv-section {
+  margin-bottom: 24px;
+}
+
+.cv-section h2 {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.cv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cv-row strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.cv-date {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.cv-muted {
+  margin: 4px 0 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.cv-body {
+  margin: 8px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.cv-actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cv-actions button {
+  padding: 8px 18px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  background: var(--surface);
+  border: 1px solid #e0e7ff;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease,
+    filter 0.16s ease,
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.cv-actions button:not(.cv-edit):hover {
+  background: var(--accent-soft);
+}
+
+.cv-actions .cv-edit {
+  color: #ffffff;
+  background-color: #4f46e5;
+  border: 1px solid #4f46e5;
+  box-shadow: var(--shadow-button);
+}
+
+.cv-actions .cv-edit:hover {
+  background-color: #4338ca;
+  border-color: #4338ca;
+  color: #ffffff;
+  filter: none;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px -10px rgba(79, 70, 229, 0.7);
+}
+
+.cv-actions .cv-edit:active {
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
+
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+  }
+  body::before {
+    display: none;
+  }
+  .cv-paper {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .cv-actions {
+    display: none;
+  }
+}
