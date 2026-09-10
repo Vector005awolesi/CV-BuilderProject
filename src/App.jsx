@@ -1,6 +1,6 @@
 import Renderer from "./components/Renderer";
-import Form from "./Form";
-import "./App.css";
+import Form from "./components/Form";
+import "./styles/App.css";
 import { useState } from "react";
 
 function App() {
@@ -20,6 +20,8 @@ function App() {
     companyName: "",
     position: "",
     about: "",
+    dateFrom: "",
+    dateUntil: "",
   });
   const formData = {
     general: generalInfoInputs,
@@ -32,23 +34,33 @@ function App() {
 
   function handleSubmit() {
     setSubmitted(true);
-    setIsEditing(false)
+    setIsEditing(false);
   }
+
+  function handleEdit() {
+    setIsEditing(true);
+  }
+
   return (
     <>
       {submitted && !isEditing ? (
-        <Renderer data={formData} editMode={isEditing} control={setIsEditing} />
+        <div className="submitted-wrap">
+          <Renderer data={formData} onEdit={handleEdit} showActions />
+        </div>
       ) : (
-        <Form
-          general={generalInfoInputs}
-          setGeneral={setGeneralInfoInputs}
-          education={educationInputs}
-          setEducation={setEducationInputs}
-          pratical={praticalExperienceInputs}
-          setPratical={setPraticalExperienceInputs}
-          submit={handleSubmit}
-          editMode={isEditing}
-        />
+        <div className="builder-layout">
+          <Form
+            general={generalInfoInputs}
+            setGeneral={setGeneralInfoInputs}
+            education={educationInputs}
+            setEducation={setEducationInputs}
+            pratical={praticalExperienceInputs}
+            setPratical={setPraticalExperienceInputs}
+            submit={handleSubmit}
+            editMode={isEditing}
+          />
+          <Renderer data={formData} />
+        </div>
       )}
     </>
   );

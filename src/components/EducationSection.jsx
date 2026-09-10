@@ -5,9 +5,6 @@ export default function Education(props) {
   function handleInput(e) {
     control((p) => ({ ...p, [e.target.name]: e.target.value }));
   }
-  console.log(
-    schoolName + courseOfStudy + date
-  )
   return (
     <>
       <div id="educationSection">

@@ -46,47 +46,36 @@ body {
 
 body {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 20px 56px;
+  display: block;
+  padding: 0;
+  margin: 0;
   font-family: var(--font);
   color: var(--ink);
-  background:
-    radial-gradient(
-      900px 480px at 12% -8%,
-      rgba(224, 231, 255, 0.55) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      760px 420px at 108% 12%,
-      rgba(237, 233, 254, 0.6) 0%,
-      transparent 55%
-    ),
-    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
-  background-attachment: fixed;
+  background: #eef1f6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Decorative page heading rendered above the card */
+/* Top bar */
 body::before {
-  content: "CV Builder";
-  margin-bottom: 20px;
-  font-size: clamp(1.55rem, 3.5vw, 2.1rem);
+  content: "Create Your CV";
+  display: block;
+  width: 100%;
+  padding: 22px 40px;
+  margin: 0;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  background: linear-gradient(120deg, #1e293b 20%, #4f46e5 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  background: #1e3a5f;
+  -webkit-text-fill-color: #ffffff;
 }
 
-/* The app card lives inside #root — keep it a predictable width */
+/* Wide app shell for side-by-side builder */
 #root {
-  width: min(480px, 100%);
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 28px 32px 48px;
 }
 
 ::selection {

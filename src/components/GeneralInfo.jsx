@@ -4,7 +4,6 @@ function GeneralInfo(props) {
    const {data , control} = props
   // Destructure data further more for testing 
   const {name , email , number } = data
-   console.log(email, name, number)
    
    function handleInput(e){
      control(p => ({...p , [e.target.name]: e.target.value}))

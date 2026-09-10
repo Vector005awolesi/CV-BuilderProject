@@ -1,6 +1,6 @@
 export default function PraticalExperience(props) {
   const { data, control } = props;
-  const { companyName, position, about } = data;
+  const { companyName, position, about, dateFrom, dateUntil } = data;
 
   function handleInput(e) {
     control((p) => ({
@@ -8,8 +8,6 @@ export default function PraticalExperience(props) {
       [e.target.name]: e.target.value,
     }));
   }
-
-  console.log(companyName + position + about);
 
   return (
     <>
@@ -37,6 +35,20 @@ export default function PraticalExperience(props) {
           onChange={handleInput}
           value={about}
         ></textarea>
+        <input
+          type="date"
+          name="dateFrom"
+          id="dateFrom"
+          onChange={handleInput}
+          value={dateFrom}
+        />
+        <input
+          type="date"
+          name="dateUntil"
+          id="dateUntil"
+          onChange={handleInput}
+          value={dateUntil}
+        />
       </div>
     </>
   );
