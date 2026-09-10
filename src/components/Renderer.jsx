@@ -53,6 +53,9 @@ function Renderer(props) {
               <button type="button" onClick={onEdit} className="cv-edit">
                 Edit
               </button>
+              <button type="button" onClick={() => window.print()}>
+                Print
+              </button>
               <button type="reset" onClick={handleReload}>
                 Reset
               </button>
