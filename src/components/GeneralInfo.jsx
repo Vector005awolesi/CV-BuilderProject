@@ -1,14 +1,16 @@
-
-function GeneralInfo(props) {
+import { useContext } from "react";
+import { FormContext } from "../context/formContext";
+function GeneralInfo() {
   // Parse in objects state and destructure from App data and control for general input
-   const {data , control} = props
-  // Destructure data further more for testing 
-  const {name , email , number } = data
-   
-   function handleInput(e){
-     control(p => ({...p , [e.target.name]: e.target.value}))
-   }
+  const { data, control } = useContext(FormContext);
+  const { general } = data;
+  const { setGeneral } = control;
+  // Destructure data further more for testing
+  const { name, email, number } = general;
 
+  function handleInput(e) {
+    setGeneral((p) => ({ ...p, [e.target.name]: e.target.value }));
+  }
 
   return (
     <>

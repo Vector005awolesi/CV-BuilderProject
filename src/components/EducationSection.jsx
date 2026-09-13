@@ -1,9 +1,13 @@
-export default function Education(props) {
-  const { data, control } = props;
-  const { schoolName, courseOfStudy, date } = data;
+import { useContext } from "react";
+import { FormContext } from "../context/formContext";
+export default function Education() {
+  const { data, control } = useContext(FormContext);
+  const { education } = data;
+  const { setEducation } = control;
+  const { schoolName, courseOfStudy, date } = education;
 
   function handleInput(e) {
-    control((p) => ({ ...p, [e.target.name]: e.target.value }));
+    setEducation((p) => ({ ...p, [e.target.name]: e.target.value }));
   }
   return (
     <>

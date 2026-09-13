@@ -1,9 +1,13 @@
-export default function PraticalExperience(props) {
-  const { data, control } = props;
-  const { companyName, position, about, dateFrom, dateUntil } = data;
+import { useContext } from "react";
+import { FormContext } from "../context/formContext";
+export default function PraticalExperience() {
+  const { data, control } = useContext(FormContext);
+  const { pratical } = data;
+  const { setPratical } = control;
+  const { companyName, position, about, dateFrom, dateUntil } = pratical;
 
   function handleInput(e) {
-    control((p) => ({
+    setPratical((p) => ({
       ...p,
       [e.target.name]: e.target.value,
     }));

@@ -2,6 +2,8 @@ import Renderer from "./components/Renderer";
 import Form from "./components/Form";
 import "./styles/App.css";
 import { useState } from "react";
+import { ActionContext } from "./context/ActionContext";
+import { FormContext } from "./context/formContext";
 
 function App() {
   const [generalInfoInputs, setGeneralInfoInputs] = useState({
@@ -28,6 +30,11 @@ function App() {
     education: educationInputs,
     pratical: praticalExperienceInputs,
   };
+  const formControls = {
+    setGeneral: setGeneralInfoInputs,
+    setEducation: setEducationInputs,
+    setPratical: setPraticalExperienceInputs,
+  };
 
   const [submitted, setSubmitted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -43,25 +50,29 @@ function App() {
 
   return (
     <>
-      {submitted && !isEditing ? (
-        <div className="submitted-wrap">
-          <Renderer data={formData} onEdit={handleEdit} showActions />
-        </div>
-      ) : (
-        <div className="builder-layout">
-          <Form
-            general={generalInfoInputs}
-            setGeneral={setGeneralInfoInputs}
-            education={educationInputs}
-            setEducation={setEducationInputs}
-            pratical={praticalExperienceInputs}
-            setPratical={setPraticalExperienceInputs}
-            submit={handleSubmit}
-            editMode={isEditing}
-          />
-          <Renderer data={formData} />
-        </div>
-      )}
+      <FormContext.Provider
+        value={{
+          data: formData,
+          control: formControls,
+          editMode: isEditing,
+          submit: handleSubmit,
+        }}
+      >
+        <ActionContext.Provider
+          value={{ onEdit: handleEdit, showActions: true }}
+        >
+          {submitted && !isEditing ? (
+            <div className="submitted-wrap">
+              <Renderer />
+            </div>
+          ) : (
+            <div className="builder-layout">
+              <Form />
+              <Renderer />
+            </div>
+          )}
+        </ActionContext.Provider>
+      </FormContext.Provider>
     </>
   );
 }

@@ -1,7 +1,11 @@
 import "../styles/Renderer.css";
+import { useContext } from "react";
+import { ActionContext } from "../context/ActionContext";
+import { FormContext } from "../context/formContext";
 
-function Renderer(props) {
-  const { data, onEdit, showActions } = props;
+function Renderer() {
+  const {data} = useContext(FormContext)
+  const {  onEdit, showActions } = useContext(ActionContext)
   const { general, education, pratical } = data;
   // Generl destructuring
   const { name, email, number } = general;
